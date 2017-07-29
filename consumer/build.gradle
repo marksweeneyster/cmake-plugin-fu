@@ -1,0 +1,24 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        maven {
+            url uri('../repo')
+        }
+    }
+    dependencies {
+        classpath group: 'org.example', name: 'cmakePlugin',
+				  version: '1.0-SNAPSHOT'
+    }
+}
+
+apply plugin: 'org.example.cmake'
+
+task useMake(type: org.example.CmakeTask) {
+    generator = "Unix Makefiles" 
+}
+
+// "configure" the plugin task named 'hello'
+cmake {
+    println 'moshi-mosh!'
+}
+
