@@ -13,12 +13,23 @@ buildscript {
 
 apply plugin: 'org.example.cmake'
 
-task useMake(type: org.example.CmakeTask) {
-    generator = "Unix Makefiles" 
+cmakeConfig {
+   generator='NMake Makefiles'
 }
 
-// "configure" the plugin task named 'hello'
-cmake {
-    println 'moshi-mosh!'
+task configureCMake {
+   cmakeConfig.generator='NMake Makefiles'
 }
 
+/*
+task useMake(type: org.example.CmakeTask, dependsOn:configureCMake) {
+    doFirst { 
+	    println 'useMake - First!'
+        generator = "Unix Makefiles" 
+    }
+    doLast { 
+	    println 'useMake - Last!'
+	    println generator
+    }
+}
+*/

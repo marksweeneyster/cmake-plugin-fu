@@ -18,5 +18,6 @@ gradle-app.setting
 .jar
 .idea
 .ninja*
+.iml
 
 CMakeFiles
